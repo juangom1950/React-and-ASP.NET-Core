@@ -4,6 +4,7 @@ export default function Menu(){
     return (
         <nav className="navbar navbar-expand-lg navbar-light bg-light">
             <div className="container-fluid">
+                {/* We use NavLink so it isn't refresh the whole page when the link is clicked */}
                 <NavLink className="navbar-brand" to="/">React Movies</NavLink>
                 <div className="collapse navbar-collapse">
                     <ul className="navbar-nav me-auto mb-2 mb-lg-0">

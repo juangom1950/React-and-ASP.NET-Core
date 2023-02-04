@@ -20,6 +20,7 @@ import RedirectToLandingPage from './utils/RedirectToLandingPage';
 const routes = [
     {path: '/genres', component: IndexGenres, exact: true},
     {path: '/genres/create', component: CreateGenre},
+    // \\d+ said: this marameter should be a number
     {path: '/genres/edit/:id(\\d+)', component: EditGenre},
 
     {path: '/actors', component: IndexActors, exact: true},
@@ -35,6 +36,7 @@ const routes = [
     {path: '/movies/filter', component: FilterMovies},
 
     {path: '/', component: LandingPage, exact: true},
+    // Any other path that isn't specify above is going to this Page
     {path: '*', component: RedirectToLandingPage}
 ];
 
