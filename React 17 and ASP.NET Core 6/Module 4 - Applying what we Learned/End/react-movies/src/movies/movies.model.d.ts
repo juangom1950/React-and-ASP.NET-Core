@@ -5,6 +5,7 @@ export interface movieDTO {
 }
 
 export interface landingPageDTO {
+    // ? means optional
     inTheaters?: movieDTO[];
     upcomingReleases?: movieDTO[];
 }

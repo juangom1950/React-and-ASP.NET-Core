@@ -1,5 +1,14 @@
 import React from "react";
 
+interface errorBoundaryProps{
+    errorUI?: React.ReactNode
+}
+
+interface errorBoundaryState{
+    hasError: boolean; 
+    message: string;
+}
+
 class ErrorBoundary extends React.Component<errorBoundaryProps, errorBoundaryState>
 {
     constructor(props: errorBoundaryProps){
@@ -26,15 +35,6 @@ class ErrorBoundary extends React.Component<errorBoundaryProps, errorBoundarySta
             return this.props.children;
         }
     }
-}
-
-interface errorBoundaryProps{
-    errorUI?: React.ReactNode
-}
-
-interface errorBoundaryState{
-    hasError: boolean; 
-    message: string;
 }
 
 export default ErrorBoundary;
