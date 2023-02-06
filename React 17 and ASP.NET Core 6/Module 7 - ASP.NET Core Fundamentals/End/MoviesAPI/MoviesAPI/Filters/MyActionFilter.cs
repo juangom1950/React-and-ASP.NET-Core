@@ -16,12 +16,13 @@ namespace MoviesAPI.Filters
             this.logger = logger;
         }
 
-
+        // Execute before the action
         public void OnActionExecuting(ActionExecutingContext context)
         {
             logger.LogWarning("OnActionExecuting");
         }
 
+        // Execute after the action
         public void OnActionExecuted(ActionExecutedContext context)
         {
             logger.LogWarning("OnActionExecuted");

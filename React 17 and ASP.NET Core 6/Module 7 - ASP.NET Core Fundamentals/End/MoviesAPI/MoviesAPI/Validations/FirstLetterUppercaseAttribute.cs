@@ -11,6 +11,7 @@ namespace MoviesAPI.Validations
     {
         protected override ValidationResult IsValid(object value, ValidationContext validationContext)
         {
+            // We don't want to validate if the value is emtpy or null
             if (value == null || string.IsNullOrEmpty(value.ToString()))
             {
                 return ValidationResult.Success;

@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 namespace MoviesAPI.Controllers
 {
     [Route("api/genres")]
+    // This will allow us to return a BadRequest when the ModelState is invalid.
     [ApiController]
     public class GenresController: ControllerBase
     {
@@ -35,6 +36,7 @@ namespace MoviesAPI.Controllers
 
         [HttpGet("{Id:int}", Name = "getGenre")] // api/genres/example
         [ServiceFilter(typeof(MyActionFilter))]
+        // Here we are allow to return an "ActionResult" or a "Genre"
         public ActionResult<Genre> Get(int Id, string param2)
         {
             logger.LogDebug("get by Id method executing...");
@@ -46,6 +48,7 @@ namespace MoviesAPI.Controllers
                 logger.LogWarning($"Genre with Id {Id} not found");
                 logger.LogError("this is an error");
                 //throw new ApplicationException();
+                // We can return NotFound() because this is enherited from ActionResult 
                 return NotFound();
             }
 

@@ -1,6 +1,16 @@
 import { useFormikContext } from "formik";
 import { ChangeEvent, useState } from "react"
 
+interface imageFieldProps {
+    displayName: string;
+    imageURL: string;
+    field: string;
+}
+
+ImageField.defaultProps = {
+    imageURL: ''
+}
+
 export default function ImageField(props: imageFieldProps) {
 
     const [imageBase64, setImageBase64] = useState('');
@@ -54,14 +64,4 @@ export default function ImageField(props: imageFieldProps) {
                 </div> : null}
         </div>
     )
-}
-
-interface imageFieldProps {
-    displayName: string;
-    imageURL: string;
-    field: string;
-}
-
-ImageField.defaultProps = {
-    imageURL: ''
 }

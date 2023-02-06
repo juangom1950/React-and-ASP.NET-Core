@@ -10,15 +10,22 @@ namespace MoviesAPI.Entities
     public class Genre: IValidatableObject
     {
         public int Id { get; set; }
+
+        // The Name of the property is going to be here in {0}
         [Required(ErrorMessage = "The field with name {0} is required")]
         [StringLength(10)]
         [FirstLetterUppercase]
         public string Name { get; set; }
         
+        //Here we can see more validations
+        /*********************************/
+
         //[Range(18, 120)]
         //public int Age { get; set; }
+
         //[CreditCard]
         //public string CreditCard { get; set; }
+
         //[Url]
         //public string Url { get; set; }
 

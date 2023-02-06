@@ -25,7 +25,11 @@ namespace MoviesAPI.Services
         public async Task<List<Genre>> GetAllGenres()
         {
             logger.LogInformation("Executing GetAllGenres");
-            await Task.Delay(1);
+
+            // Asynchronous menas that while it is waitting it will perform other requests
+            // and then after the 3 seconds it will come back here to continue with this task
+            // This will delay the task 3 milisecond
+            await Task.Delay(3000);
             return _genres;
         }
 

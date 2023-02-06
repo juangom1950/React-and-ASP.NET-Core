@@ -8,7 +8,8 @@ export default function CreateGenre() {
             <GenreForm model={{ name: '' }}
                 onSubmit={async value => {
                     // when the form is posted
-                    await new Promise(r => setTimeout(r, 1));
+                    // This delay will desable de button for 3 sec
+                    await new Promise(r => setTimeout(r, 3000));
                     console.log(value);
                 }}
             />

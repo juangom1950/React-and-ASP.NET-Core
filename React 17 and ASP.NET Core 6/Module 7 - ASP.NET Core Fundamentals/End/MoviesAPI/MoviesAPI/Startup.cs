@@ -31,6 +31,7 @@ namespace MoviesAPI
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            // Add the custom exception filter. Video "Custom and Global Filters"
             services.AddControllers(options =>
             {
                 options.Filters.Add(typeof(MyExceptionFilter));
@@ -51,6 +52,8 @@ namespace MoviesAPI
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env, ILogger<Startup> logger)
         {
+            // Here we are loggin every single body of the http response.
+            // app.Use indicate that we aren't short circuting the pipeline in this case
             app.Use(async (context, next) =>
             {
                 using (var swapStream = new MemoryStream())
@@ -58,6 +61,7 @@ namespace MoviesAPI
                     var originalResponseBody = context.Response.Body;
                     context.Response.Body = swapStream;
 
+                    // This continue the execution of the pipeline
                     await next.Invoke();
 
                     swapStream.Seek(0, SeekOrigin.Begin);
@@ -71,6 +75,7 @@ namespace MoviesAPI
                 }
             });
 
+            // Here we define to which route this pipeline corresponds to 
             app.Map("/map1", (app) =>
             {
                 app.Run(async context =>
