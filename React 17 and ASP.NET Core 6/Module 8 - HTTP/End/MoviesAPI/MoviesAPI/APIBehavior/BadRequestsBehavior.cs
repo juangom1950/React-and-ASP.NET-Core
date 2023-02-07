@@ -6,6 +6,8 @@ using System.Threading.Tasks;
 
 namespace MoviesAPI.APIBehavior
 {
+    // We need to configure it in the startup.cs
+    // Video "Transform Errors into Array"
     public class BadRequestsBehavior
     {
         public static void Parse(ApiBehaviorOptions options)
@@ -13,6 +15,7 @@ namespace MoviesAPI.APIBehavior
             options.InvalidModelStateResponseFactory = context =>
             {
                 var response = new List<string>();
+
                 foreach (var key in context.ModelState.Keys)
                 {
                     foreach (var error in context.ModelState[key].Errors)

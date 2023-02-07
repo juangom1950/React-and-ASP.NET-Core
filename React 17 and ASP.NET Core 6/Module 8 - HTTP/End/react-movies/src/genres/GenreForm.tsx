@@ -5,6 +5,11 @@ import * as Yup from 'yup';
 import TextField from '../forms/TextField'
 import { genreCreationDTO } from "./genres.model";
 
+interface genreFormProps{
+    model: genreCreationDTO;
+    onSubmit(values: genreCreationDTO, action: FormikHelpers<genreCreationDTO>): void;
+}
+
 export default function GenreForm(props: genreFormProps){
     return (
         <Formik initialValues={props.model}
@@ -26,9 +31,4 @@ export default function GenreForm(props: genreFormProps){
 
         </Formik>
     )
-}
-
-interface genreFormProps{
-    model: genreCreationDTO;
-    onSubmit(values: genreCreationDTO, action: FormikHelpers<genreCreationDTO>): void;
 }

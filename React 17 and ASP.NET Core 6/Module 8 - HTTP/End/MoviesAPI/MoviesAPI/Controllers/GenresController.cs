@@ -63,8 +63,11 @@ namespace MoviesAPI.Controllers
         public async Task<ActionResult> Post([FromBody] GenreCreationDTO genreCreationDTO)
         {
             var genre = mapper.Map<Genre>(genreCreationDTO);
+            // This is just marking this object to be added
             context.Add(genre);
             await context.SaveChangesAsync();
+
+            // Idon't want to return anythig from here
             return NoContent();
         }
 

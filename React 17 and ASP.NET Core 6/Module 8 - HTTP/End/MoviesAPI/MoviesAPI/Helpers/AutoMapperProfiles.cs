@@ -13,6 +13,7 @@ namespace MoviesAPI.Helpers
     {
         public AutoMapperProfiles(GeometryFactory geometryFactory)
         {
+            // Because the Reverse this mapping is going from Genre to GenreDTO
             CreateMap<GenreDTO, Genre>().ReverseMap();
             CreateMap<GenreCreationDTO, Genre>();
 
