@@ -59,6 +59,7 @@ namespace MoviesAPI
             services.AddCors(options =>
             {
                 var frontendURL = Configuration.GetValue<string>("frontend_url");
+                // Here we need to configure cors so it allows me to read this information from a Web Browser base client.
                 options.AddDefaultPolicy(builder =>
                 {
                     builder.WithOrigins(frontendURL).AllowAnyMethod().AllowAnyHeader()

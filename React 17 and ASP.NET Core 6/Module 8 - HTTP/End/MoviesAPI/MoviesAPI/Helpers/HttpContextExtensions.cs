@@ -15,6 +15,9 @@ namespace MoviesAPI.Helpers
             if (httpContext == null) { throw new ArgumentNullException(nameof(httpContext)); }
 
             double count = await queryable.CountAsync();
+            // We are putting in the header of the response of the http request, the total amount of records
+            // for our table, in that way the client would be able to access this information.
+            // We need to configure this in the Startup.cs, so cors allows me to get this information from the client's web browser
             httpContext.Response.Headers.Add("totalAmountOfRecords", count.ToString());
         }
     }

@@ -31,6 +31,7 @@ namespace MoviesAPI.Controllers
         }
 
         [HttpGet] // api/genres
+        // PaginationDTO are the records per page
         public async Task<ActionResult<List<GenreDTO>>> Get([FromQuery] PaginationDTO paginationDTO)
         {
             var queryable = context.Genres.AsQueryable();

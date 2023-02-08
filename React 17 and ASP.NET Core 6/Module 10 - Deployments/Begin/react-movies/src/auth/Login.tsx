@@ -23,7 +23,7 @@ export default function Login(){
             update(getClaims());
             history.push('/');
         }
-        catch (error){
+        catch (error: any){
             setErrors(error.response.data);
         }
     }

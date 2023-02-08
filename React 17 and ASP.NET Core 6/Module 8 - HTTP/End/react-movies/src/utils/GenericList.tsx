@@ -1,6 +1,13 @@
 import { ReactElement } from "react";
 import Loading from "./Loading";
 
+interface genericListProps{
+    list: any;
+    loadingUI?: ReactElement;
+    emptyListUI?: ReactElement;
+    children: ReactElement;
+}
+
 export default function GenericList(props: genericListProps){
     if (!props.list){
         if (props.loadingUI){
@@ -15,11 +22,4 @@ export default function GenericList(props: genericListProps){
     } else{
         return props.children;
     }
-}
-
-interface genericListProps{
-    list: any;
-    loadingUI?: ReactElement;
-    emptyListUI?: ReactElement;
-    children: ReactElement;
 }

@@ -8,18 +8,17 @@ import GenericList from "./GenericList";
 import customConfirm from "./customConfirm";
 
 interface indexEntityProps<T> {
-    url: string;
-    createURL: string;
-    title: string;
-    entityName: string;
-    children(
-      entities: T[],
-      buttons: (editUrl: string, id: number) => ReactElement
-    ): ReactElement;
-  }
+  url: string;
+  createURL: string;
+  title: string;
+  entityName: string;
+  children(
+    entities: T[],
+    buttons: (editUrl: string, id: number) => ReactElement
+  ): ReactElement;
+}
 
 export default function IndexEntity<T>(props: indexEntityProps<T>) {
-
   const [entities, setEntities] = useState<T[]>();
   const [totalAmountOfPages, setTotalAmountOfPages] = useState(0);
   const [recordsPerPage, setRecordsPerPage] = useState(5);
@@ -49,10 +48,10 @@ export default function IndexEntity<T>(props: indexEntityProps<T>) {
     try {
       await axios.delete(`${props.url}/${id}`);
       loadData();
-    } catch (error) {
-      // if (error && error.response) {
-      //     console.error(error.response.data);
-      // }
+    } catch (error: any) {
+      if (error && error.response) {
+        console.error(error.response.data);
+      }
     }
   }
 
