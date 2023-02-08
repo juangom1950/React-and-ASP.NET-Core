@@ -26,12 +26,15 @@ export default function IndexEntity<T>(props: indexEntityProps<T>) {
 
   useEffect(() => {
     loadData();
+
+    // We want to rerun this use effect when any of this dependencies change
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [page, recordsPerPage]);
 
   function loadData() {
     axios
       .get(props.url, {
+        // Here we are sending the page and recordPerPage to our Web API
         params: { page, recordsPerPage },
       })
       .then((response: AxiosResponse<T[]>) => {

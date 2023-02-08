@@ -72,6 +72,7 @@ namespace MoviesAPI.Controllers
             return NoContent();
         }
 
+        // Updating the Genre
         [HttpPut("{id:int}")]
         public async Task<ActionResult> Put(int id, [FromBody] GenreCreationDTO genreCreationDTO)
         {
@@ -82,6 +83,7 @@ namespace MoviesAPI.Controllers
                 return NotFound();
             }
 
+            // Here I am mapping from gereCreationDTO to genre and I am mantaining the same instance of genre
             genre = mapper.Map(genreCreationDTO, genre);
             await context.SaveChangesAsync();
             return NoContent();

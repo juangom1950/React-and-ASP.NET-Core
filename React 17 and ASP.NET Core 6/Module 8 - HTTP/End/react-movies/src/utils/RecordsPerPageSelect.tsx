@@ -1,3 +1,8 @@
+
+interface recordsPerPageSelectProps {
+    onChange(recordsPerPage: number): void
+}
+
 export default function RecordsPerPageSelect(props: recordsPerPageSelectProps) {
     return (
         <div className="mb-3" style={{ width: '150px' }}>
@@ -16,8 +21,4 @@ export default function RecordsPerPageSelect(props: recordsPerPageSelectProps) {
             </select>
         </div>
     )
-}
-
-interface recordsPerPageSelectProps {
-    onChange(recordsPerPage: number): void
 }

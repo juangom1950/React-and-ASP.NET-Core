@@ -4,6 +4,19 @@ import axios, { AxiosResponse } from 'axios';
 import DisplayErrors from '../utils/DisplayErrors';
 import Loading from '../utils/Loading';
 
+interface editEntityProps<TCreation, TRead> {
+    url: string;
+    entityName: string;
+    indexURL: string;
+    transform(entity: TRead): TCreation;
+    transformFormData?(model: TCreation): FormData;
+    children(entity: TCreation, edit: (entity: TCreation) => void): ReactElement;
+}
+
+EditEntity.defaultProps = {
+    transform: (entity: any) => entity
+}
+
 export default function EditEntity<TCreation, TRead>
     (props: editEntityProps<TCreation, TRead>) {
 
@@ -36,7 +49,7 @@ export default function EditEntity<TCreation, TRead>
             
             history.push(props.indexURL);
         }
-        catch (error) {
+        catch (error: any) {
             if (error && error.response) {
                 setErrors(error.response.data);
             }
@@ -50,17 +63,4 @@ export default function EditEntity<TCreation, TRead>
             {entity ? props.children(entity, edit) : <Loading />}
         </>
     )
-}
-
-interface editEntityProps<TCreation, TRead> {
-    url: string;
-    entityName: string;
-    indexURL: string;
-    transform(entity: TRead): TCreation;
-    transformFormData?(model: TCreation): FormData;
-    children(entity: TCreation, edit: (entity: TCreation) => void): ReactElement;
-}
-
-EditEntity.defaultProps = {
-    transform: (entity: any) => entity
 }
